@@ -1,5 +1,4 @@
 import numpy as np
-import colour
 
 from .utils.func import split, stack
 
@@ -40,21 +39,17 @@ def lch2luv(LCHuv):
 
 if __name__ == '__main__':
     randxyz = np.rand((1080,1920,3), dtype=np.float32)
-    randluv = colour.XYZ_to_Luv(randxyz)
-    randluv = np.from_numpy(randluv)
+    # randluv = colour.XYZ_to_Luv(randxyz)
 
     # # verify luv2lch----
     # cs = colour.Luv_to_LCHuv(randluv)
-    # cs = np.from_numpy(cs)
     # our = luv2lch(randluv)
     # diff = abs(cs - our)
     # print(diff.max(), diff.mean())
 
     # # # verify lch2luv----
     # randlch = colour.Luv_to_LCHuv(randluv)
-    # randlch = np.from_numpy(randlch)
     # cs = colour.LCHuv_to_Luv(randlch)
-    # cs = np.from_numpy(cs)
     # our = lch2luv(randlch)
     # diff = abs(cs - our)
     # print(diff.max(), diff.mean())

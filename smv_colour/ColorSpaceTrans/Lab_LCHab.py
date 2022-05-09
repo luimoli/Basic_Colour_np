@@ -1,6 +1,4 @@
 import numpy as np
-import numpy as np
-import colour
 
 from .utils.func import split, stack
 
@@ -39,19 +37,19 @@ def lch2lab(LCH):
 
 if __name__ == '__main__':
     randxyz = np.float32(np.random.random((1080,1920,3)))
-    randlab = colour.XYZ_to_Lab(randxyz)
+    # randlab = colour.XYZ_to_Lab(randxyz)
 
 
-    # verify Lab_to_LCH----
-    cs = colour.Lab_to_LCHab(randlab)
-    our = lab2lch(randlab)
-    diff = cs - our
-    print(diff.max(), diff.mean())
+    # # verify Lab_to_LCH----
+    # cs = colour.Lab_to_LCHab(randlab)
+    # our = lab2lch(randlab)
+    # diff = cs - our
+    # print(diff.max(), diff.mean())
 
-    # # verify LCH_to_Lab----
-    randlch = colour.Lab_to_LCHab(randlab)
-    cs = colour.LCHab_to_Lab(randlch)
-    our = lch2lab(randlch)
-    diff = abs(cs - our)
-    print(diff.max(), diff.mean())
+    # # # verify LCH_to_Lab----
+    # randlch = colour.Lab_to_LCHab(randlab)
+    # cs = colour.LCHab_to_Lab(randlch)
+    # our = lch2lab(randlch)
+    # diff = abs(cs - our)
+    # print(diff.max(), diff.mean())
 

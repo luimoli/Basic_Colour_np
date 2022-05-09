@@ -1,4 +1,3 @@
-import colour
 import numpy as np
 
 from .utils.func import split, stack
@@ -61,10 +60,10 @@ if __name__ == "__main__":
     # diff = abs(our - cs)
     # print(diff.max(), diff.mean())
 
-    randxyy = colour.XYZ_to_xyY(randarr)
-    our = xyy2xyz(randxyy)
-    cs = colour.xyY_to_XYZ(randxyy)
-    diff = abs(cs - our)
-    print(diff.max(), diff.mean())
+    # randxyy = colour.XYZ_to_xyY(randarr)
+    # our = xyy2xyz(randxyy)
+    # cs = colour.xyY_to_XYZ(randxyy)
+    # diff = abs(cs - our)
+    # print(diff.max(), diff.mean())
 
     
