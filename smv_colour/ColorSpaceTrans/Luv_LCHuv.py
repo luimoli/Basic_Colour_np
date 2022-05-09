@@ -15,7 +15,7 @@ def luv2lch(Luv):
 
     L, u, v = split(Luv)
 
-    H = 180 * np.atan2(v, u) / (np.acos(np.zeros(1)).item() * 2)
+    H = 180 * np.arctan2(v, u) / (np.arccos(np.zeros(1)).item() * 2)
     H[H < 0] += 360
     C = np.sqrt(u ** 2 + v ** 2)
 

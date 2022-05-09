@@ -54,19 +54,16 @@ def xy2xyy(xy, Y=1.0):
 
 
 if __name__ == "__main__":
-    randarr = np.rand((1080,1920,3))
+    randarr = np.random.random((1080,1920,3))
 
     # our = xyz2xyy(randarr)
-    # our = our.numpy()
     # cs = colour.XYZ_to_xyY(randarr)
     # diff = abs(our - cs)
     # print(diff.max(), diff.mean())
 
     randxyy = colour.XYZ_to_xyY(randarr)
-    randxyy = np.from_numpy(randxyy)
     our = xyy2xyz(randxyy)
     cs = colour.xyY_to_XYZ(randxyy)
-    cs = np.from_numpy(cs)
     diff = abs(cs - our)
     print(diff.max(), diff.mean())
 

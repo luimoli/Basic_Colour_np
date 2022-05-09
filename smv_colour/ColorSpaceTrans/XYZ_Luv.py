@@ -1,6 +1,4 @@
 import numpy as np
-import numpy as np
-import colour
 
 from .utils.func import split, stack
 from .utils.constants import const

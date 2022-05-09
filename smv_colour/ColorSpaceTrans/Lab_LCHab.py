@@ -13,7 +13,7 @@ def lab2lch(Lab):
     """
     L, a, b = split(Lab)
 
-    H = 180 * np.atan2(b, a) / (np.acos(np.zeros(1)).item() * 2)
+    H = 180 * np.arctan2(b, a) / (np.arccos(np.zeros(1)).item() * 2)
     H[H < 0] += 360
     C = np.sqrt(a ** 2 + b ** 2)
 
@@ -38,23 +38,20 @@ def lch2lab(LCH):
     return Lab
 
 if __name__ == '__main__':
-    randxyz = np.rand((1080,1920,3), dtype=np.float32)
+    randxyz = np.float32(np.random.random((1080,1920,3)))
     randlab = colour.XYZ_to_Lab(randxyz)
-    randlab = np.from_numpy(randlab)
 
-    # # verify Lab_to_LCH----
-    # cs = colour.Lab_to_LCHab(randlab)
-    # cs = np.from_numpy(cs)
-    # our = Lab_to_LCH(randlab)
-    # diff = cs - our
-    # print(diff.max(), diff.mean())
 
-    # # # verify LCH_to_Lab----
-    # randlch = colour.Lab_to_LCHab(randlab)
-    # randlch = np.from_numpy(randlch)
-    # cs = colour.LCHab_to_Lab(randlch)
-    # cs = np.from_numpy(cs)
-    # our = lch2lab(randlch)
-    # diff = abs(cs - our)
-    # print(diff.max(), diff.mean())
+    # verify Lab_to_LCH----
+    cs = colour.Lab_to_LCHab(randlab)
+    our = lab2lch(randlab)
+    diff = cs - our
+    print(diff.max(), diff.mean())
+
+    # # verify LCH_to_Lab----
+    randlch = colour.Lab_to_LCHab(randlab)
+    cs = colour.LCHab_to_Lab(randlch)
+    our = lch2lab(randlch)
+    diff = abs(cs - our)
+    print(diff.max(), diff.mean())
 

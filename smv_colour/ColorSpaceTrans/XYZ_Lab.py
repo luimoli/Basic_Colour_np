@@ -53,21 +53,18 @@ def lab2xyz(Lab, illuminant_mode='d65'):
     return XYZ
 
 if __name__ == '__main__':
-    randxyz = np.rand((1080,1920,3), dtype=np.float32)
+    randxyz = np.float32(np.random.random((1080,1920,3)))
 
-    # # verify XYZ_to_Lab
-    # v0 = colour.XYZ_to_Lab(randxyz)
-    # v0 = torch.from_numpy(v0)
-    # v1 = xyz2lab(randxyz)
-    # diff = v0 - v1
-    # print(diff.max(),diff.mean())
+    # verify XYZ_to_Lab
+    v0 = colour.XYZ_to_Lab(randxyz)
+    v1 = xyz2lab(randxyz)
+    diff = v0 - v1
+    print(diff.max(),diff.mean())
 
-    # # # verify Lab_to_XYZ
-    # randlab = colour.XYZ_to_Lab(randxyz)
-    # randlab = torch.from_numpy(randlab)
-    # cs = colour.Lab_to_XYZ(randlab)
-    # cs = torch.from_numpy(cs)
-    # our = lab2xyz(randlab)
-    # diff = cs - our
-    # print(diff.max(),diff.mean())
+    # # verify Lab_to_XYZ
+    randlab = colour.XYZ_to_Lab(randxyz)
+    cs = colour.Lab_to_XYZ(randlab)
+    our = lab2xyz(randlab)
+    diff = cs - our
+    print(diff.max(),diff.mean())
 

@@ -5,7 +5,7 @@ from .utils.constants import const
 
 
 class RGBXYZTransfer:
-    def __init__(self, color_space, cuda_available=False) -> None:
+    def __init__(self, color_space) -> None:
         """[This RGB<->XYZ tranform is performed without chromatic_adaptation_transform.
            Suppose that RGB-colour-space and XYZ-colour-space have the same reference white.]
 
@@ -29,9 +29,6 @@ class RGBXYZTransfer:
             self.XYZ_to_RGB_matrix = np.array([[1.716651, -0.355671, -0.253366],
                                                     [-0.666684, 1.616481, 0.015769],
                                                     [0.017640, -0.042771, 0.942103]], dtype=np.float32)
-        if cuda_available:
-            self.RGB_to_XYZ_matrix = self.RGB_to_XYZ_matrix.cuda()
-            self.XYZ_to_RGB_matrix = self.XYZ_to_RGB_matrix.cuda()
         
     def rgb2xyz(self, img_rgb):
         return dot_vector(self.RGB_to_XYZ_matrix, img_rgb)

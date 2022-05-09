@@ -1,7 +1,5 @@
 import cv2
 import numpy as np
-import numpy as np
-
 class HSVTransfer:
     def rgb2hsv(self, img_arr):
         r, g, b = img_arr[:, :, 0], img_arr[:, :, 1], img_arr[:, :, 2]
@@ -17,7 +15,7 @@ class HSVTransfer:
         h = np.where((maximum == g) & (delta != 0), 60.0 * ((b - r) / delta) + 120.0, h)
         h = np.where((maximum == b) & (delta != 0), 60.0 * ((r - g) / delta) + 240.0, h)
 
-        return np.cat((h[..., None], s[..., None], v[..., None]), axis=-1)
+        return np.concatenate((h[..., None], s[..., None], v[..., None]), axis=-1)
 
     def hsv2rgb(self, img_arr):
         h, s, v = img_arr[:, :, 0], img_arr[:, :, 1], img_arr[:, :, 2]
@@ -47,7 +45,7 @@ class HSVTransfer:
         b = np.where((h_sub_i == 3) | (h_sub_i == 4), v, b)
         b = np.where((h_sub_i == 5), var_q, b)
 
-        return np.cat((r[..., None], g[..., None], b[..., None]), axis=-1)
+        return np.concatenate((r[..., None], g[..., None], b[..., None]), axis=-1)
 
 
 if __name__ == '__main__':
@@ -57,7 +55,7 @@ if __name__ == '__main__':
 
     # # rgb to hsv align
     cv_hsv = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2HSV)
-    our_hsv = hsv_transfer.rgb2hsv(np.from_numpy(img_rgb))
+    our_hsv = hsv_transfer.rgb2hsv(img_rgb)
     our_hsv = our_hsv.cpu().numpy()
     diff = abs(cv_hsv - our_hsv)
 

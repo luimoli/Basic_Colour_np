@@ -1,5 +1,4 @@
 import numpy as np
-import numpy as np
 
 class YUVTransfer:
     def __init__(self, color_space):
